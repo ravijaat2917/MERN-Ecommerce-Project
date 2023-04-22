@@ -40,10 +40,10 @@ const ProductDetails = () => {
   return (
     <Layout>
       <div className="row container product-details">
-        <div className="col-md-6">
+        <div className="col-md-6 productDetailsImage">
           <img
             src={`/api/v1/product/product-photo/${product._id}`}
-            className="card-img-top"
+            className="card-img-top1 ml-3"
             alt={product.name}
             height="300"
             width={"350px"}
@@ -52,13 +52,13 @@ const ProductDetails = () => {
         <div className="col-md-6 product-details-info">
           <h1 className="text-center">Product Details</h1>
           <hr />
-          <h6>Name : {product.name}</h6>
+          <h3>{product.name}</h3>
           <h6>Description : {product.description}</h6>
           <h6>
             Price :
-            {product?.price?.toLocaleString("en-US", {
+            {product?.price?.toLocaleString("en-IN", {
               style: "currency",
-              currency: "USD",
+              currency: "INR",
             })}
           </h6>
           <h6>Category : {product?.category?.name}</h6>
@@ -83,9 +83,9 @@ const ProductDetails = () => {
                 <div className="card-name-price">
                   <h5 className="card-title">{p.name}</h5>
                   <h5 className="card-title card-price">
-                    {p.price.toLocaleString("en-US", {
+                    {p.price.toLocaleString("en-IN", {
                       style: "currency",
-                      currency: "USD",
+                      currency: "INR",
                     })}
                   </h5>
                 </div>
@@ -95,6 +95,7 @@ const ProductDetails = () => {
                 <div className="card-name-price">
                   <button
                     className="btn btn-info ms-1"
+                    {...window.scrollTo(0, 0)}
                     onClick={() => navigate(`/product/${p.slug}`)}
                   >
                     More Details
