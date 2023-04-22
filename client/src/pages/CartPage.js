@@ -24,9 +24,9 @@ const CartPage = () => {
       cart?.map((item) => {
         total = total + item.price;
       });
-      return total.toLocaleString("en-US", {
+      return total.toLocaleString("en-IN", {
         style: "currency",
-        currency: "USD",
+        currency: "INR",
       });
     } catch (error) {
       console.log(error);
@@ -101,19 +101,25 @@ const CartPage = () => {
             <div className="col-md-7  p-0 m-0">
               {cart?.map((p) => (
                 <div className="row card flex-row" key={p._id}>
-                  <div className="col-md-4">
+                  <div className="col-md-4 productDetailsImage">
                     <img
                       src={`/api/v1/product/product-photo/${p._id}`}
-                      className="card-img-top"
+                      className="productDetailsImage"
                       alt={p.name}
-                      width="100%"
+                      // width="100%"
                       height={"130px"}
                     />
                   </div>
                   <div className="col-md-4">
                     <p>{p.name}</p>
                     <p>{p.description.substring(0, 30)}</p>
-                    <p>Price : {p.price}</p>
+                    <p>
+                      Price : {" "}
+                      {p.price.toLocaleString("en-IN", {
+                        style: "currency",
+                        currency: "INR",
+                      })}
+                    </p>
                   </div>
                   <div className="col-md-4 cart-remove-btn">
                     <button
