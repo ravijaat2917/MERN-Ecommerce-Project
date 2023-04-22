@@ -9,7 +9,6 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-
 //payment gateway
 var gateway = new braintree.BraintreeGateway({
   environment: braintree.Environment.Sandbox,
@@ -193,7 +192,7 @@ export const updateProductController = async (req, res) => {
   }
 };
 
-// // filters
+// filters
 export const productFiltersController = async (req, res) => {
   try {
     const { checked, radio } = req.body;
@@ -286,7 +285,7 @@ export const realtedProductController = async (req, res) => {
   try {
     const { pid, cid } = req.params;
     const products = await productModel
-      .find({ 
+      .find({
         category: cid,
         _id: { $ne: pid },
       })
@@ -307,7 +306,7 @@ export const realtedProductController = async (req, res) => {
   }
 };
 
-// get products by catgory
+// get prdocyst by catgory
 export const productCategoryController = async (req, res) => {
   try {
     const category = await categoryModel.findOne({ slug: req.params.slug });
@@ -331,13 +330,13 @@ export const productCategoryController = async (req, res) => {
 //token
 export const braintreeTokenController = async (req, res) => {
   try {
-    gateway.clientToken.generate({}, (err, res) => {
+    gateway.clientToken.generate({}, function (err, response) {
       if (err) {
-        res.status(500).send(err)
+        res.status(500).send(err);
       } else {
-        res.status(200).send(res)
+        res.send(response);
       }
-    })
+    });
   } catch (error) {
     console.log(error);
   }
