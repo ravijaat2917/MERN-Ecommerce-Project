@@ -35,7 +35,11 @@ app.use("/api/v1/product", productRoutes);
 
 //rest api
 app.get("/*", function (req, res) {
+<<<<<<< HEAD
   res.sendFile(path.join(__dirname,'/client/build/index.html'));
+=======
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+>>>>>>> 280f2a660b3210a42aeb4b7ede37881c2934078e
 });
 //PORT
 const PORT = process.env.PORT || 8080;
