@@ -60,10 +60,10 @@ const Orders = () => {
                         <div className="col-md-4">
                           <img
                             src={`/api/v1/product/product-photo/${p._id}`}
-                            className="card-img-top"
+                            className="card-img-top1 productDetailsImage"
                             alt={p.name}
-                            width="100px"
-                            height={"100px"}
+                            // width="auto"
+                            height={"120px"}
                           />
                         </div>
                         <div className="col-md-8">
