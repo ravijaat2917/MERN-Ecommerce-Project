@@ -26,11 +26,11 @@ const CategoryProduct = () => {
 
   return (
     <Layout>
-      <div className="container mt-3 category">
+      <div className="container mt-3 ml-10 category">
         <h4 className="text-center">Category - {category?.name}</h4>
         <h6 className="text-center">{products?.length} result found </h6>
-        <div className="row">
-          <div className="col-md-9 offset-1">
+        <div className="row ml-5">
+          <div className="col-md">
             <div className="d-flex flex-wrap">
               {products?.map((p) => (
                 <div className="card m-2" key={p._id}>
