@@ -26,7 +26,7 @@ app.use(morgan("dev"));
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 // console.log(path.join(__dirname));
-app.use(express.static(path.join(__dirname)));
+app.use(express.static(path.join(__dirname,"./client/build")));
 
 //routes
 app.use("/api/v1/auth", authRoutes);
@@ -34,9 +34,8 @@ app.use("/api/v1/category", categoryRoutes);
 app.use("/api/v1/product", productRoutes);
 
 //rest api
-app.get("/*", function (req, res) {
+app.use("*", function (req, res) {
   res.sendFile(path.join(__dirname,'./client/build/index.html'));
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 //PORT
 const PORT = process.env.PORT || 8080;
