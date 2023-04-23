@@ -98,40 +98,6 @@ const CartPage = () => {
         </div>
         <div className="container ">
           <div className="row ">
-            <div className="col-md-7  p-0 m-0">
-              {cart?.map((p) => (
-                <div className="row card flex-row" key={p._id}>
-                  <div className="col-md-4 productDetailsImage">
-                    <img
-                      src={`/api/v1/product/product-photo/${p._id}`}
-                      className="productDetailsImage"
-                      alt={p.name}
-                      // width="100%"
-                      height={"130px"}
-                    />
-                  </div>
-                  <div className="col-md-4">
-                    <p>{p.name.substring(0,50)}..</p>
-                    <p>{p.description.substring(0, 30)}</p>
-                    <p>
-                      Price : {" "}
-                      {p.price.toLocaleString("en-IN", {
-                        style: "currency",
-                        currency: "INR",
-                      })}
-                    </p>
-                  </div>
-                  <div className="col-md-4 cart-remove-btn">
-                    <button
-                      className="btn btn-danger"
-                      onClick={() => removeCartItem(p._id)}
-                    >
-                      Remove
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
             <div className="col-md-5 cart-summary ">
               <h2>Cart Summary</h2>
               <p>Total | Checkout | Payment</p>
@@ -198,6 +164,40 @@ const CartPage = () => {
                   </>
                 )}
               </div>
+            </div>
+            <div className="col-md-7  p-0 m-0">
+              {cart?.map((p) => (
+                <div className="row card flex-row" key={p._id}>
+                  <div className="col-md-4 productDetailsImage">
+                    <img
+                      src={`/api/v1/product/product-photo/${p._id}`}
+                      className="productDetailsImage"
+                      alt={p.name}
+                      // width="100%"
+                      height={"130px"}
+                    />
+                  </div>
+                  <div className="col-md-4">
+                    <p>{p.name.substring(0, 50)}..</p>
+                    <p>{p.description.substring(0, 30)}</p>
+                    <p>
+                      Price :{" "}
+                      {p.price.toLocaleString("en-IN", {
+                        style: "currency",
+                        currency: "INR",
+                      })}
+                    </p>
+                  </div>
+                  <div className="col-md-4 cart-remove-btn">
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => removeCartItem(p._id)}
+                    >
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
