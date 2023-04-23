@@ -19,7 +19,18 @@ const HomePage = () => {
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [filterApplied, setFilterApplied] = useState(false);
 
+  // get refresh data
+  const loadbutton = () => {
+     return loading ? (
+                  "Loading ..."
+                ) : (
+                  <>
+                    {" "}
+                    Loadmore <AiOutlineReload />
+                  </>
+                )}
   //get all cat
   const getAllCategory = async () => {
     try {
@@ -88,6 +99,7 @@ const HomePage = () => {
   };
   useEffect(() => {
     if (!checked.length || !radio.length) getAllProducts();
+    setFilterApplied(false);
   }, [checked.length, radio.length]);
 
   useEffect(() => {
@@ -102,6 +114,7 @@ const HomePage = () => {
         radio,
       });
       setProducts(data?.products);
+      setFilterApplied(true);
     } catch (error) {
       console.log(error);
     }
@@ -161,7 +174,7 @@ const HomePage = () => {
                 />
                 <div className="card-body">
                   <div className="card-name-price">
-                    <h5 className="card-title">{p.name.substring(0,20)}..</h5>
+                    <h5 className="card-title">{p.name.substring(0, 20)}..</h5>
                     <h5 className="card-title card-price">
                       {p.price.toLocaleString("en-IN", {
                         style: "currency",
@@ -206,14 +219,22 @@ const HomePage = () => {
                   setPage(page + 1);
                 }}
               >
-                {loading ? (
+                {filterApplied ? (
+                  loadbutton
+                ) : (
+                  <>
+                    {" "}
+                    Loadmore <AiOutlineReload />
+                  </>
+                )}
+                {/* {loading ? (
                   "Loading ..."
                 ) : (
                   <>
                     {" "}
-                    {/* Loadmore <AiOutlineReload /> */}
+                    Loadmore <AiOutlineReload />
                   </>
-                )}
+                )} */}
               </button>
             )}
           </div>
