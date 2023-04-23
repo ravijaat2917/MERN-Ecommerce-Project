@@ -111,7 +111,7 @@ const CartPage = () => {
                     />
                   </div>
                   <div className="col-md-4">
-                    <p>{p.name}</p>
+                    <p>{p.name.substring(0,50)}..</p>
                     <p>{p.description.substring(0, 30)}</p>
                     <p>
                       Price : {" "}

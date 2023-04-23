@@ -41,7 +41,9 @@ const CategoryProduct = () => {
                   />
                   <div className="card-body">
                     <div className="card-name-price">
-                      <h5 className="card-title">{p.name}</h5>
+                      <h5 className="card-title">
+                        {p.name.substring(0, 20)}..
+                      </h5>
                       <h5 className="card-title card-price">
                         {p.price.toLocaleString("en-US", {
                           style: "currency",
@@ -50,7 +52,7 @@ const CategoryProduct = () => {
                       </h5>
                     </div>
                     <p className="card-text ">
-                      {p.description.substring(0, 60)}...
+                      {p.description.substring(0, 115)}...
                     </p>
                     <div className="card-name-price">
                       <button
